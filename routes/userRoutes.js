@@ -15,13 +15,7 @@ router.use(authController.protect);
 
 router.patch("/updateMyPassword", authController.updatePassword);
 router.get("/me", userController.getMe, userController.getUser);
-router.patch(
-  "/updateMe",
-  // userController.uploadUserPhoto,
-  // userController.resizeUserPhoto,
-  // cloudinary.uploadImage,
-  userController.updateMe
-);
+router.patch("/updateMe", userController.updateMe);
 router.post(
   "/updateAvatar",
   userController.uploadUserPhoto,

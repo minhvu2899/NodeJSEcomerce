@@ -20,7 +20,7 @@ router
   .get(categoryController.getCategory)
   .patch(
     authController.protect,
-    // authController.restrictTo("admin"),
+    authController.restrictTo("admin"),
     // categoryController.uploadCategoryImages,
     // categoryController.resizeCategoryImages,
     categoryController.updateCategory

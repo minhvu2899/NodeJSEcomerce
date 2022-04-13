@@ -10,7 +10,7 @@ router
   .route("/")
   .get(
     // authController.protect,
-    // authController.restrictTo("user"),
+    authController.restrictTo("user"),
     orderController.getAllOrders
   )
   .post(
@@ -22,16 +22,6 @@ router
 router
   .route("/myOrders")
   .get(authController.protect, orderController.getMyOrders);
-//   .patch(
-//     authController.protect,
-//     authController.restrictTo("admin", "lead-guide"),
-//     orderController.updateOrder
-//   )
-//   .delete(
-//     authController.protect,
-//     authController.restrictTo("admin", "lead-guide"),
-//     orderController.deleteOrder
-//   );
 
 router.route("/:id").get(orderController.getOrder);
 router.route("/:id/status").patch(orderController.updateOrderStatus);

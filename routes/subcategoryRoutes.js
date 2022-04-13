@@ -21,8 +21,6 @@ router
   .patch(
     authController.protect,
     authController.restrictTo("admin", "lead-guide"),
-    // categoryController.uploadCategoryImages,
-    // categoryController.resizeCategoryImages,
     subcategoryController.updateCategory
   )
   .delete(
