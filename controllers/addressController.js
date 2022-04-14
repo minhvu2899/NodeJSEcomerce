@@ -4,7 +4,7 @@ exports.updateDefaultAddress = async (req, res, next) => {
   console.log(req.body);
   const address = await Address.findOne({ isDefault: true });
   console.log(address);
-  if (!address) {
+  if (!address || address._id === req.params.id) {
     req.body.isDefault = true;
     return next();
   }
