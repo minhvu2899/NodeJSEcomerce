@@ -17,6 +17,13 @@ exports.getAllCartsByUser = catchAsync(async (req, res, next) => {
     data: cart,
   });
 });
+exports.removeAllCartsByUser = catchAsync(async (req, res, next) => {
+  await Cart.deleteMany({ user: req.user.id });
+
+  res.status(201).json({
+    status: "success",
+  });
+});
 exports.getCart = factory.getOne(Cart);
 exports.createCart = catchAsync(async (req, res, next) => {
   let item = await Cart.findOne({ product: req.body.product });
