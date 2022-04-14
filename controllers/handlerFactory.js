@@ -18,8 +18,6 @@ exports.deleteOne = (Model) =>
 
 exports.updateOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    console.log(req.params.id);
-    console.log("body", req.body);
     const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
@@ -117,7 +115,7 @@ exports.getAll = (Model) =>
     // To allow for nested GET reviews on tour (hack)
     let filter = {};
     if (req.params.id) filter = { user: req.params.id };
-    console.log(req.query.search);
+    // console.log(req.query.search);
     if (req.query.search) filter = { $text: { $search: req.query.search } };
 
     const features = new APIFeatures(Model.find(filter), req.query)
@@ -133,7 +131,6 @@ exports.getAll = (Model) =>
     let limit = req.query.limit * 1 || 10;
     const doc = await features.query;
     const doc1 = await featuresTemp.query;
-    console.log(doc1.length, this.queryString);
     // SEND RESPONSE
     res.status(200).json({
       status: "success",

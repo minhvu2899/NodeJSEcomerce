@@ -22,8 +22,6 @@ router
   .patch(
     authController.protect,
     authController.restrictTo("user"),
-    // AddressController.uploadAddressImages,
-    // AddressController.resizeAddressImages,
     addressController.updateDefaultAddress,
     addressController.updateAddress
   )

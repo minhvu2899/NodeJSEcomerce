@@ -8,7 +8,8 @@ exports.updateDefaultAddress = async (req, res, next) => {
     req.body.isDefault = true;
     return next();
   }
-  if (address._id === req.params.id) {
+  console.log("id", req.params.id);
+  if (address && address.id === req.params.id) {
     req.body.isDefault = true;
     return next();
   }
